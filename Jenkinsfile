@@ -3,7 +3,10 @@ node{
       git 'https://github.com/Koushikgudipati/jenkins_javaapp'
       }
    stage('Maven build'){
-      def mvnname= tool name: 'maven3', type: 'maven'
+      withEnv(['JAVA_HOME=/opt/jdk1.8.0_211/']) {
+     def mvnname= tool name: 'maven3', type: 'maven'
       sh "${mvnname}/bin/mvn package"
+}
+     
       }
 }

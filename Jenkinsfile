@@ -1,4 +1,4 @@
-node{
+node("agentVinay") {
    stage("SCM Checkout"){
       git 'https://github.com/Koushikgudipati/jenkins_javaapp'
       }

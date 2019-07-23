@@ -8,8 +8,10 @@ node("AgentHarun") {
       sh "${mvnname}/bin/mvn clean package"
         }
       }
+     
    stage('docker build image'){
-    buildImage email: '', name: 'dockerwithdockerkubectl', password: '', path: '.', rm: false, timeout: 0, username: ''  
+    sh label: '', script: 'docker build -t dockerwithdockerkubectl .'
+   
    }
    stage('Slack Notification'){
    slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#general', color: 'good', message: 'HI this is from jenkins pipeline', teamDomain: 'ibmdstapplegarage', tokenCredentialId: 'slack-demo'   
